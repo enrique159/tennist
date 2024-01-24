@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
+import storageFactory from '@/plugins/IonicStorage'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -21,11 +22,12 @@ import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/styles.scss';
 
 const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
+  .use(IonicVue, { mode: 'ios' })
+  .use(router)
+  .use(storageFactory)
   
 router.isReady().then(() => {
   app.mount('#app');

@@ -74,6 +74,8 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-background-color: #F7F7F7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -152,7 +154,7 @@ http://ionicframework.com/docs/theming/ */
    * -------------------------------------------
    */
 
-  .ios body {
+  /* .ios body {
     --ion-background-color: #000000;
     --ion-background-color-rgb: 0,0,0;
 
@@ -182,13 +184,13 @@ http://ionicframework.com/docs/theming/ */
     --ion-item-background: #000000;
 
     --ion-card-background: #1c1c1d;
-  }
+  } */
 
-  .ios ion-modal {
+  /* .ios ion-modal {
     --ion-background-color: var(--ion-color-step-100);
     --ion-toolbar-background: var(--ion-color-step-150);
     --ion-toolbar-border-color: var(--ion-color-step-250);
-  }
+  } */
 
 
   /*
@@ -196,7 +198,7 @@ http://ionicframework.com/docs/theming/ */
    * -------------------------------------------
    */
 
-  .md body {
+  /* .md body {
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 
@@ -232,11 +234,140 @@ http://ionicframework.com/docs/theming/ */
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
-  }
+  } */
 }
+
 
 html {
   /* For more information on dynamic font scaling, visit the documentation: 
   https://ionicframework.com/docs/layout/dynamic-font-scaling */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
+}
+
+html.ios {
+  --ion-default-font: $font-primary;
+}
+
+/*=========== BASE =============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-primary;
+  font-size: $b3-size;
+  background-color: $color-background;
+  overflow-x: hidden;
+  color: $color-text;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3,h4,h5,h6, p {
+  color: $color-text;
+  margin: 0;
+}
+
+h1 {
+  font-size: $h1-size;
+  font-weight: $font-bold;
+  line-height: $line-height-h1;
+}
+
+h2 {
+  font-size: $h2-size;
+  font-weight: $font-bold;
+  line-height: $line-height-h2;
+}
+
+h3 {
+  font-size: $h3-size;
+  font-weight: $font-bold;
+  line-height: $line-height-h3;
+}
+
+h4 {
+  font-size: $h4-size;
+  font-weight: $font-bold;
+  line-height: $line-height-h4;
+}
+
+h5 {
+  font-size: $h5-size;
+  font-weight: $font-bold;
+  line-height: $line-height-h5;
+}
+
+h6 {
+  font-size: $h6-size;
+  font-weight: $font-bold;
+  line-height: $line-height-h6;
+}
+
+p {
+  font-size: $b3-size;
+  font-weight: $font-regular;
+  line-height: $line-height-b3;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  transition: $transition-normal;
+  &:hover{
+    color: currentColor;
+  }
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  border: none;
+  font-size: $b2-size;
+  transition: $transition-fast;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $color-white-3 $color-white-0;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $color-black-3;
+  border-radius: 10px;
 }

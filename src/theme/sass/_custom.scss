@@ -1,0 +1,21 @@
+.input-gray {
+  @include input-base;
+  border: 2px solid $color-white-1;
+  background-color: $color-white-1;
+  font-size: $b3-size;
+  color: $color-text;
+  padding: 0.3rem 1rem !important;
+}
+
+.button-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: $box-shadow-2;
+  display: grid;
+  place-items: center;
+  &:active {
+    opacity: 0.5;
+    box-shadow: $box-shadow-3;
+  }
+}

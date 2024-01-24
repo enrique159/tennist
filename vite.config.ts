@@ -5,6 +5,11 @@ import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  esbuild: {
+    supported: {
+      'top-level-await': true //browsers can handle top-level-await features
+    },
+  },
   plugins: [
     vue(),
     legacy()
@@ -14,8 +19,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  test: {
-    globals: true,
-    environment: 'jsdom'
-  }
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "@/theme/main.scss"; 
+        `,
+      },
+    },
+  },
 })
