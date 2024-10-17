@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import TablerIcons from './plugins/tabler-icons'
+import { createPinia } from 'pinia'
 
 import { IonicVue } from '@ionic/vue';
 
@@ -29,14 +31,23 @@ import '@ionic/vue/css/display.css';
 
 /* @import '@ionic/vue/css/palettes/dark.always.css'; */
 /* @import '@ionic/vue/css/palettes/dark.class.css'; */
-import '@ionic/vue/css/palettes/dark.system.css';
+// import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/styles.scss';
 
+// Global Components
+import HeaderPage from './components/HeaderPage.vue';
+
+// Global Composables
 const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
+const pinia = createPinia()
+
+app.component('HeaderPage', HeaderPage);
+app.use(IonicVue);
+app.use(router);
+app.use(TablerIcons);
+app.use(pinia);
 
 router.isReady().then(() => {
   app.mount('#app');

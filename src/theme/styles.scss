@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --ion-font-family: v.$font-primary;
+  --ion-background-color: v.$color-background;
+  --ion-toolbar-background: v.$color-background;
+  --ion-toolbar-color: v.$color-text;
+}
+
+/* Basic CSS for apps built with Ionic */
+body {
+  margin: 0;
+  font-family: v.$font-primary !important;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: v.$color-background;
+  overflow-x: hidden;
+  color: v.$color-text;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

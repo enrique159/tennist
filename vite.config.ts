@@ -19,5 +19,16 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom'
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+        additionalData: `
+          @use "@/theme/scss/fonts.scss" as *;
+          @use "@/theme/scss/variables.scss" as v;
+        `,
+      },
+    },
+  },  
 })
