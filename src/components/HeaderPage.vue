@@ -5,7 +5,7 @@
         <icon-menu class="text-tertiary" />
       </ion-menu-button>
 
-      <ion-title class="font-regular">
+      <ion-title class="font-light text-tertiary">
         <slot>
           tennist
         </slot>

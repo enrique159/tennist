@@ -11,6 +11,11 @@ export default defineConfig({
     vue(),
     legacy()
   ],
+  esbuild: {
+    supported: {
+      'top-level-await': true //browsers can handle top-level-await features
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

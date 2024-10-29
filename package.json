@@ -5,11 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:ios": "ionic capacitor run ios -l --external",
+    "dev:android": "ionic capacitor run android -l --external",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "open:xcode": "ionic capacitor open ios",
+    "open:android": "ionic capacitor open android",
+    "sync": "ionic capacitor sync --inline"
   },
   "dependencies": {
     "@capacitor/android": "6.1.2",
@@ -19,9 +24,12 @@
     "@capacitor/ios": "6.1.2",
     "@capacitor/keyboard": "6.0.2",
     "@capacitor/status-bar": "6.0.1",
+    "@ionic/storage": "^4.0.0",
     "@ionic/vue": "^8.0.0",
     "@ionic/vue-router": "^8.0.0",
     "@tabler/icons-vue": "^3.19.0",
+    "animate.css": "^4.1.1",
+    "axios": "^1.7.7",
     "ionicons": "^7.0.0",
     "pinia": "^2.2.4",
     "vue": "^3.3.0",

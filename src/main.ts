@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
 import TablerIcons from './plugins/tabler-icons'
+import storageFactory from '@/plugins/IonicStorage'
 import { createPinia } from 'pinia'
 
 import { IonicVue } from '@ionic/vue';
@@ -35,19 +36,28 @@ import '@ionic/vue/css/display.css';
 
 /* Theme variables */
 import './theme/styles.scss';
+import 'animate.css';
 
 // Global Components
 import HeaderPage from './components/HeaderPage.vue';
+import RoundedButton from './components/buttons/RoundedButton.vue';
+import IconButton from './components/buttons/IconButton.vue';
+import LoadingSpinner from './components/LoadingSpinner.vue';
 
 // Global Composables
 const app = createApp(App)
 const pinia = createPinia()
+const storagePlugin = await storageFactory()
 
 app.component('HeaderPage', HeaderPage);
+app.component('RoundedButton', RoundedButton);
+app.component('IconButton', IconButton);
+app.component('LoadingSpinner', LoadingSpinner);
 app.use(IonicVue);
 app.use(router);
 app.use(TablerIcons);
 app.use(pinia);
+app.use(storagePlugin)
 
 router.isReady().then(() => {
   app.mount('#app');

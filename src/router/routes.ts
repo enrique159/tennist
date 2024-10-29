@@ -1,16 +1,17 @@
-import { RouteRecordRaw } from 'vue-router';
-import HomePage from "@/views/HomePage.vue";
+import { RouteRecordRaw } from 'vue-router'
+import LoadingPage from '@/views/LoadingPage.vue'
 
+import { AuthRoutes } from '@/views/auth/routes'
+import { HomeRoutes } from '@/views/home/routes'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    redirect: "/home",
+    path: '/',
+    redirect: '/loading',
   },
-  {
-    path: "/home",
-    component: HomePage,
-  },
-];
+  { path: '/loading', component: LoadingPage },
+  ...AuthRoutes,
+  ...HomeRoutes
+]
 
-export default routes;
+export default routes
