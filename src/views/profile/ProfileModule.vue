@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent, IonRouterOutlet } from '@ionic/vue';
+import { IonRouterOutlet, IonPage, IonContent } from '@ionic/vue';
 </script>

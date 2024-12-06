@@ -31,3 +31,25 @@ body {
 //   backdrop-filter: blur(10px);
 //   transition: background-color 0.3s ease;
 // }
+
+.custom-menu-button {
+  background: rgba(0, 0, 0, 0.10);
+  padding: 0.8rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.required label::after {
+  content: " *";
+}
+
+.custom-header-height {
+  height: 128px;
+}

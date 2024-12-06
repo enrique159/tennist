@@ -30,7 +30,8 @@
     "@tabler/icons-vue": "^3.19.0",
     "animate.css": "^4.1.1",
     "axios": "^1.7.7",
-    "ionicons": "^7.0.0",
+    "ionicons": "^7.4.0",
+    "maska": "^3.0.3",
     "pinia": "^2.2.4",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0"

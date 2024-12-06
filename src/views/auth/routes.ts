@@ -1,5 +1,6 @@
 import AuthModule from './AuthModule.vue';
 import SigninPage from './views/SigninPage.vue';
+import SignupPage from './views/SignupPage.vue';
 import LoginPage from './views/LoginPage.vue';
 
 export const AuthRoutes = [
@@ -20,6 +21,11 @@ export const AuthRoutes = [
         path: 'signin',
         name: 'Signin',
         component: SigninPage,
+      },
+      {
+        path: 'signup',
+        name: 'Signup',
+        component: SignupPage,
       }
     ],
   },

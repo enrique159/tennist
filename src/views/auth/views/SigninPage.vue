@@ -32,6 +32,7 @@
                   :type="showPassword ? 'text' : 'password'"
                   class="border-b bg-transparent px-2 py-3 text-lg focus:outline-none"
                   :class="[ errorMessages.password ? 'border-secondary text-secondary' : 'border-primary' ]"
+                  autocomplete="current-password"
                 >
                 <button class="bg-transparent text-primary text-lg absolute right-2 top-1/4 w-8 aspect-square rounded-full active:bg-white/10 grid place-items-center" @click="showPassword = !showPassword">
                   <icon-eye v-if="showPassword" />
@@ -80,6 +81,8 @@ import { useToast } from '@/composables/useToast';
 import { useStorage } from '@/composables/useStorage'
 import { type State, StateOptions } from '@/types';
 import HttpStatusCode from '@/app/shared/enums/httpStatusCode';
+import FormValidations from '@/utils/formValidations';
+import Exception from '@/app/shared/error/Exception';
 
 const ionRouter = useIonRouter()
 
@@ -99,34 +102,6 @@ const errorMessages = reactive({
   password: '',
 })
 
-const isPhoneNumber = (phoneNumber: string) => {
-  return phoneNumber.match(/^\+?[0-9]{10,14}$/)
-}
-
-const validateEmailPhone = (emailPhone: string) => {
-  // first check if it's a phone number or email, depending of what type is, do the regex match
-  if (isPhoneNumber(emailPhone)) { // phone number
-    if (!emailPhone.match(/^\+?[0-9]{10,14}$/)) {
-      errorMessages.emailPhone = 'número de teléfono no válido'
-      return false
-    }
-  } else { // email
-    if (!emailPhone.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
-      errorMessages.emailPhone = 'correo o teléfono no válido'
-      return false
-    }
-  }
-  return true
-}
-
-const validatePassword = (password: string) => {
-  if (password.length < 8) {
-    errorMessages.password = 'contraseña demasiado corta'
-    return false
-  }
-  return true
-}
-
 const resetErrorMessages = () => {
   errorMessages.emailPhone = ''
   errorMessages.password = ''
@@ -139,8 +114,8 @@ const loadingSignIn = ref<State>(StateOptions.IDLE)
 
 const validateSignInForm = async () => {
   resetErrorMessages()
-  validateEmailPhone(signInForm.emailPhone)
-  validatePassword(signInForm.password)
+  FormValidations.validateEmailPhone(signInForm.emailPhone, (message) => errorMessages.emailPhone = message)
+  FormValidations.validatePassword(signInForm.password, (message) => errorMessages.password = message)
 
   const errorCount = Object.values(errorMessages).filter((error) => error !== '').length
   if (errorCount > 0) {
@@ -148,7 +123,6 @@ const validateSignInForm = async () => {
   }
 
   loadingSignIn.value = StateOptions.LOADING
-  await new Promise((resolve) => setTimeout(resolve, 2000))
   await signIn({ emailPhone: signInForm.emailPhone, password: signInForm.password })
     .then((response) => {
       loadingSignIn.value = StateOptions.SUCCESS
@@ -159,11 +133,15 @@ const validateSignInForm = async () => {
       ionRouter.navigate('/home', 'root')
     })
     .catch((error) => {
-      for (const err of error.errors) {
-        if (err.statusCode === HttpStatusCode.NOT_FOUND) errorToast('No se ha encontrado un usuario con ese correo o teléfono')
-        else errorToast(err.message)
-      }
       loadingSignIn.value = StateOptions.ERROR
+      if (error instanceof Exception) {
+        for (const err of error.errors) {
+          if (err.statusCode === HttpStatusCode.NOT_FOUND) errorToast('No se ha encontrado un usuario con ese correo o teléfono')
+          else errorToast(err.message)
+        }
+      } else {
+        errorToast('Ocurrió un error al ingresar')
+      }
     })
 }
 </script>

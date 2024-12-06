@@ -5,9 +5,9 @@ export type DataErrorType = {
 };
 
 export type ErrorType = {
-  code: string;
+  statusCode: string | number;
   category: number;
-  msg: string;
+  message: string;
   description: string;
 };
 

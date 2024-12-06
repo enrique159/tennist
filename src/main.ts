@@ -4,6 +4,7 @@ import router from './router';
 import TablerIcons from './plugins/tabler-icons'
 import storageFactory from '@/plugins/IonicStorage'
 import { createPinia } from 'pinia'
+import { vMaska } from "maska/vue"
 
 import { IonicVue } from '@ionic/vue';
 
@@ -43,6 +44,7 @@ import HeaderPage from './components/HeaderPage.vue';
 import RoundedButton from './components/buttons/RoundedButton.vue';
 import IconButton from './components/buttons/IconButton.vue';
 import LoadingSpinner from './components/LoadingSpinner.vue';
+import CustomCheckbox from './components/inputs/CustomCheckbox.vue';
 
 // Global Composables
 const app = createApp(App)
@@ -53,6 +55,8 @@ app.component('HeaderPage', HeaderPage);
 app.component('RoundedButton', RoundedButton);
 app.component('IconButton', IconButton);
 app.component('LoadingSpinner', LoadingSpinner);
+app.component('CustomCheckbox', CustomCheckbox);
+app.directive('maska', vMaska)
 app.use(IonicVue);
 app.use(router);
 app.use(TablerIcons);

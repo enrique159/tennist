@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
 import {
   signIn as signInUseCase,
+  signUp as signUpUseCase,
 } from '@/app/auth/SignInRepository'
-import { ISignInRequestPayload } from '@/app/auth/interfaces'
+import { ISignInRequestPayload, ISignUpRequestPayload } from '@/app/auth/interfaces'
 import { User } from '@/types'
 
 interface IAppState {
@@ -41,6 +42,18 @@ export const useAppStore = defineStore('app', {
     // FETCH API 🚀
     async signIn(payload: ISignInRequestPayload) {
       const action = signInUseCase(payload)
+      action.then((response) => {
+        return response
+      }).catch((error) => {
+        console.error('Error ❗️:', error.errors)
+        return error
+      })
+
+      return action
+    },
+
+    async signUp(payload: ISignUpRequestPayload) {
+      const action = signUpUseCase(payload)
       action.then((response) => {
         return response
       }).catch((error) => {

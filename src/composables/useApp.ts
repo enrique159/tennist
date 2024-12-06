@@ -1,4 +1,4 @@
-import { ISignInRequestPayload } from '@/app/auth/interfaces'
+import { ISignInRequestPayload, ISignUpRequestPayload } from '@/app/auth/interfaces'
 import { useAppStore } from '@/stores/appStore'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
@@ -12,7 +12,7 @@ export const useApp = () => {
   })
 
   const firstName = computed(() => {
-    return user.value.fullName.split(' ')[0]
+    return user.value.fullName && user.value.fullName.length > 0 && user.value.fullName.split(' ')[0]
   })
 
   const setToken = (token: string) => {
@@ -27,9 +27,18 @@ export const useApp = () => {
     return appStore.getStateToken.length > 0
   }
 
+  const signOut = () => {
+    appStore.setToken('')
+    appStore.setUser({})
+  }
+
   // API
   const signIn = (payload: ISignInRequestPayload) => {
     return appStore.signIn(payload)
+  }
+
+  const signUp = (payload: ISignUpRequestPayload) => {
+    return appStore.signUp(payload)
   }
 
   return {
@@ -41,7 +50,9 @@ export const useApp = () => {
 
     setToken,
     setUser,
+    signOut,
 
-    signIn
+    signIn,
+    signUp
   }
 }

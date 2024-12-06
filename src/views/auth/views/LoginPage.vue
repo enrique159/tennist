@@ -22,7 +22,7 @@
             </div>
           </rounded-button>
 
-          <rounded-button custom class-name="bg-white text-tertiary">
+          <rounded-button custom class-name="bg-white text-tertiary" @click="signUp">
             <div class="flex items-center justify-center w-full h-full relative">
               <span class="text-complementary1 text-lg">
                 crear cuenta
@@ -83,6 +83,10 @@ const ionRouter = useIonRouter();
 
 const signIn = () => {
   ionRouter.push('/auth/signin');
+}
+
+const signUp = () => {
+  ionRouter.push('/auth/signup');
 }
 </script>
 
