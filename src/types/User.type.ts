@@ -16,10 +16,10 @@ export interface User extends Base {
   playingTime?: number // Tiempo jugado en meses
   playingStyle?: PlayingStyle
   courtTypePreference?: CourtTypePreference
+  gamePreference?: GamePreference
   gamesPerWeek?: number // Juegos jugados por semana
   playerGoals?: PlayerGoals
   dominantHand?: DominantHand
-  gamePreference?: GamePreference
   status: string
   isDeleted: boolean
   lastLoginAt?: Date
@@ -78,16 +78,16 @@ enum CourtTypePreference {
   HARD = 'hard',
 }
 
+enum GamePreference {
+  SINGLES = 'singles',
+  DOUBLES = 'doubles',
+}
+
 enum PlayerGoals {
   COMPETITIVE = 'competitive',
   RECREATIONAL = 'recreational',
   FITNESS = 'fitness',
   NONE = 'none',
-}
-
-enum GamePreference {
-  SINGLES = 'singles',
-  DOUBLES = 'doubles',
 }
 
 enum DominantHand {
@@ -102,7 +102,7 @@ export {
   Experience,
   PlayingStyle,
   CourtTypePreference,
+  GamePreference,
   PlayerGoals,
   DominantHand,
-  GamePreference,
 }

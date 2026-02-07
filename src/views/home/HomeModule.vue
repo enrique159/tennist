@@ -1,8 +1,12 @@
 <template>
   <ion-page>
-    <ion-content :force-overscroll='false'>
+    <ion-content :force-overscroll="false">
       <ion-split-pane content-id="main-content">
-        <ion-menu content-id="main-content" type="overlay" class="menu-backdrop">
+        <ion-menu
+          content-id="main-content"
+          type="overlay"
+          class="menu-backdrop"
+        >
           <ion-content class="bg-tertiary" :force-overscroll="false">
             <ion-list id="inbox-list" class="pl-2 custom-content">
               <ion-list-header class="mb-8 flex items-center justify-between">
@@ -12,10 +16,27 @@
                 </ion-menu-toggle>
               </ion-list-header>
 
-              <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
-                <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" :detail="false" class="hydrated" :class="[ i === 7 ? 'pt-20' : '' ]" >
+              <ion-menu-toggle
+                :auto-hide="false"
+                v-for="(p, i) in appPages"
+                :key="i"
+              >
+                <ion-item
+                  @click="selectedIndex = i"
+                  router-direction="root"
+                  :router-link="p.url"
+                  lines="none"
+                  :detail="false"
+                  class="hydrated"
+                  :class="[i === 7 ? 'pt-20' : '']"
+                >
                   <ion-label>
-                    <span class="text-white uppercase font-bold text-2xl" :class="{ 'text-primary selected-marker': selectedIndex === i }">
+                    <span
+                      class="text-white uppercase font-bold text-2xl"
+                      :class="{
+                        'text-primary selected-marker': selectedIndex === i,
+                      }"
+                    >
                       {{ p.title }}
                     </span>
                   </ion-label>
@@ -31,10 +52,21 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent, IonSplitPane, IonMenu, IonRouterOutlet, IonList, IonListHeader, IonMenuToggle, IonItem, IonLabel } from '@ionic/vue';
-import { ref } from 'vue';
+import {
+  IonPage,
+  IonContent,
+  IonSplitPane,
+  IonMenu,
+  IonRouterOutlet,
+  IonList,
+  IonListHeader,
+  IonMenuToggle,
+  IonItem,
+  IonLabel,
+} from '@ionic/vue'
+import { ref } from 'vue'
 
-const selectedIndex = ref(0);
+const selectedIndex = ref(0)
 const appPages = [
   {
     title: 'Inicio',
@@ -72,11 +104,13 @@ const appPages = [
     title: 'Ajustes',
     url: '/settings',
   },
-];
+]
 
-const path = window.location.pathname.split('/')[1];
+const path = window.location.pathname.split('/')[1]
 if (path !== undefined) {
-  selectedIndex.value = appPages.findIndex((page) => page.url.split('/')[1] === path.toLowerCase());
+  selectedIndex.value = appPages.findIndex(
+    (page) => page.url.split('/')[1] === path.toLowerCase(),
+  )
 }
 </script>
 

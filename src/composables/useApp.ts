@@ -24,7 +24,7 @@ export const useApp = () => {
   }
 
   const validToken = () => {
-    return appStore.getStateToken.length > 0
+    return appStore.getStateToken?.length > 0
   }
 
   const signOut = () => {

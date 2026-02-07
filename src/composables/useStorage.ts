@@ -28,6 +28,7 @@ export const useStorage = () => {
 
   // SET STORAGE VALUE
   const setStorageValue = async(payload: valueStorage) => {
+    console.log(payload)
     await storage.set(payload.key, payload.value)
   }
 

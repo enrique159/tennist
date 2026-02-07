@@ -83,7 +83,7 @@ const options = [
     title: 'Gestor de canchas / club',
     description: 'también jugador y/o entrenador',
     details:
-      'Como gerente de canchas o club tienes acceso a las mismas características que un jugador y entrenador, pero con la posibilidad de crear y administrar canchas y clubes.',
+      'Como gestor de canchas o club tienes acceso a las mismas características que un jugador y entrenador, pero con la posibilidad de crear y administrar canchas y clubes.',
     icon: new URL('@/assets/icon_court.png', import.meta.url).href,
   },
 ]

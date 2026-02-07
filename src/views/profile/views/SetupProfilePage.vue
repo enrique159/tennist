@@ -23,6 +23,7 @@
         >
           <!-- DINAMIC CONTENT -->
           <component
+            v-if="currentSelector"
             :is="currentSelector"
             :experience="experience"
             @update:experience="updateExperience"
@@ -44,6 +45,7 @@ import IntroductionMessages from '../components/IntroductionMessages.vue'
 import SetupProfileFooter from '../components/SetupProfileFooter.vue'
 import RolePlayerSelector from '../components/RolePlayerSelector.vue'
 import ExperienceSelector from '../components/ExperienceSelector.vue'
+import StylePlayerSelector from '../components/StylePlayerSelector.vue'
 import { IonPage, IonContent, IonButton } from '@ionic/vue'
 import { computed, ref } from 'vue'
 import { UserExperience } from '@/types'
@@ -85,7 +87,8 @@ const updateExperience = (experienceValue: UserExperience) => {
 const currentSelector = computed(() => {
   if (currentStep.value === 1) return RolePlayerSelector
   else if (currentStep.value === 2) return ExperienceSelector
-  else return ''
+  else if (currentStep.value === 3) return StylePlayerSelector
+  else return null
 })
 </script>
 

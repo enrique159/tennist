@@ -27,7 +27,7 @@
     "@ionic/storage": "^4.0.0",
     "@ionic/vue": "^8.0.0",
     "@ionic/vue-router": "^8.0.0",
-    "@tabler/icons-vue": "^3.19.0",
+    "@tabler/icons-vue": "^3.36.1",
     "animate.css": "^4.1.1",
     "axios": "^1.7.7",
     "ionicons": "^7.4.0",

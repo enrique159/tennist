@@ -1,11 +1,11 @@
 import axios, { AxiosInstance, AxiosError, RawAxiosRequestHeaders } from 'axios'
-import { IHttp } from './domain/interfaces/IHttp';
+import { IHttp } from './domain/interfaces/IHttp'
 
-import type { Response } from './domain/interfaces';
-import type { IPayload } from './domain/interfaces';
-import Exception from '../shared/error/Exception';
-import HttpStatusCode from '../shared/enums/httpStatusCode';
-import ErrorCode from '../shared/error/ErrorCodes';
+import type { Response } from './domain/interfaces'
+import type { IPayload } from './domain/interfaces'
+import Exception from '../shared/error/Exception'
+import HttpStatusCode from '../shared/enums/httpStatusCode'
+import ErrorCode from '../shared/error/ErrorCodes'
 
 const TIME_OUT = 30000
 
@@ -14,9 +14,9 @@ export default class Http implements IHttp {
 
   private requestHeaders = (headers: RawAxiosRequestHeaders) => {
     return {
-      ...headers,
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      ...headers,
     }
   }
 
@@ -29,8 +29,8 @@ export default class Http implements IHttp {
   }
 
   /*
-    *********** GET ***********
-  */
+   *********** GET ***********
+   */
   async get<T, U>(url: string, payload?: IPayload<T>): Promise<Response<U>> {
     try {
       const response = await this.axios.get(url, {
@@ -40,25 +40,30 @@ export default class Http implements IHttp {
         data: payload?.data ?? null,
       })
 
-      return { data: response.data }
+      return response.data
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.code === 'ECONNABORTED') {
-          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [ErrorCode.ERR0020])
+          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [
+            ErrorCode.ERR0020,
+          ])
         }
-        throw new Exception(err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR, err.response?.data)
-      }
-      else {
+        throw new Exception(
+          err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR,
+          err.response?.data
+        )
+      } else {
         console.log('🚨 Unexpected error: ', err)
-        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [ErrorCode.ERR0000])
+        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [
+          ErrorCode.ERR0000,
+        ])
       }
     }
   }
 
-
   /*
-    *********** POST ***********
-  */
+   *********** POST ***********
+   */
   async post<T, U>(url: string, payload?: IPayload<T>): Promise<Response<U>> {
     try {
       const response = await this.axios.post(url, payload?.data || {}, {
@@ -68,25 +73,29 @@ export default class Http implements IHttp {
         timeout: payload?.timeout ?? TIME_OUT,
       })
 
-      return { data: response.data }
+      return response.data
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.code === 'ECONNABORTED') {
           throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, ErrorCode.ERR0020)
         }
-        throw new Exception(err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR, err.response?.data)
-      }
-      else {
+        throw new Exception(
+          err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR,
+          err.response?.data
+        )
+      } else {
         console.log('🚨 Unexpected error: ', err)
-        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, ErrorCode.ERR0000)
+        throw new Exception(
+          HttpStatusCode.INTERNAL_SERVER_ERROR,
+          ErrorCode.ERR0000
+        )
       }
     }
   }
 
-
   /*
-    *********** PUT ***********
-  */
+   *********** PUT ***********
+   */
   async put<T, U>(url: string, payload?: IPayload<T>): Promise<Response<U>> {
     try {
       const response = await this.axios.put(url, payload?.data || {}, {
@@ -96,25 +105,30 @@ export default class Http implements IHttp {
         timeout: payload?.timeout ?? TIME_OUT,
       })
 
-      return { data: response.data }
+      return response.data
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.code === 'ECONNABORTED') {
-          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [ErrorCode.ERR0020])
+          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [
+            ErrorCode.ERR0020,
+          ])
         }
-        throw new Exception(err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR, err.response?.data)
-      }
-      else {
+        throw new Exception(
+          err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR,
+          err.response?.data
+        )
+      } else {
         console.log('🚨 Unexpected error: ', err)
-        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [ErrorCode.ERR0000])
+        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [
+          ErrorCode.ERR0000,
+        ])
       }
     }
   }
 
-
   /*
-    *********** DELETE ***********
-  */
+   *********** DELETE ***********
+   */
   async delete<T, U>(url: string, payload?: IPayload<T>): Promise<Response<U>> {
     try {
       const response = await this.axios.delete(url, {
@@ -123,25 +137,30 @@ export default class Http implements IHttp {
         timeout: payload?.timeout ?? TIME_OUT,
       })
 
-      return { data: response.data }
+      return response.data
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.code === 'ECONNABORTED') {
-          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [ErrorCode.ERR0020])
+          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [
+            ErrorCode.ERR0020,
+          ])
         }
-        throw new Exception(err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR, err.response?.data)
-      }
-      else {
+        throw new Exception(
+          err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR,
+          err.response?.data
+        )
+      } else {
         console.log('🚨 Unexpected error: ', err)
-        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [ErrorCode.ERR0000])
+        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [
+          ErrorCode.ERR0000,
+        ])
       }
     }
   }
 
-
   /*
-    *********** PATCH ***********
-  */
+   *********** PATCH ***********
+   */
   async patch<T, U>(url: string, payload?: IPayload<T>): Promise<Response<U>> {
     try {
       const response = await this.axios.patch(url, payload?.data || {}, {
@@ -151,17 +170,23 @@ export default class Http implements IHttp {
         timeout: payload?.timeout ?? TIME_OUT,
       })
 
-      return { data: response.data }
+      return response.data
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.code === 'ECONNABORTED') {
-          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [ErrorCode.ERR0020])
+          throw new Exception(HttpStatusCode.REQUEST_TIMEOUT, [
+            ErrorCode.ERR0020,
+          ])
         }
-        throw new Exception(err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR, err.response?.data)
-      }
-      else {
+        throw new Exception(
+          err.response?.status ?? HttpStatusCode.INTERNAL_SERVER_ERROR,
+          err.response?.data
+        )
+      } else {
         console.log('🚨 Unexpected error: ', err)
-        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [ErrorCode.ERR0000])
+        throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, [
+          ErrorCode.ERR0000,
+        ])
       }
     }
   }
