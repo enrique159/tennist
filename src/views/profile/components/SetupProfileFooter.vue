@@ -10,7 +10,8 @@
     >
       <ion-button
         fill="clear"
-        class="text-secondary font-semibold"
+        class="text-secondary font-semibold transition-all"
+        :class="{ 'opacity-0': isLastStep }"
         @click="goForward"
       >
         omitir paso
@@ -20,7 +21,7 @@
         class="flex items-center justify-center gap-2 w-full h-full relative"
       >
         <div
-          v-for="step in 5"
+          v-for="step in stepsCount"
           :key="step"
           class="w-2 h-2 rounded-full"
           :class="[
@@ -29,25 +30,30 @@
         ></div>
       </div>
     </div>
-
     <button
       class="rounded-full h-12 aspect-square flex items-center justify-center transition-all bg-tertiary text-primary active:bg-tertiary/80"
-      @click="goForward"
+      @click="() => isLastStep ? handleSubmit() : goForward()"
     >
-      <icon-arrow-right />
+      <loading-spinner v-if="isLoading" class-name="text-primary" />
+      <icon-check v-else-if="isLastStep" />
+      <icon-arrow-right v-else />
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { IonButton } from '@ionic/vue'
-import { IconArrowLeft, IconArrowRight } from '@tabler/icons-vue'
+import { IconArrowLeft, IconArrowRight, IconCheck } from '@tabler/icons-vue'
+import { computed } from 'vue';
 
-defineProps<{
+const props = defineProps<{
   currentStep: number
+  isLoading: boolean
 }>()
 
-const emits = defineEmits(['goBackward', 'goForward'])
+const stepsCount = 4
+
+const emits = defineEmits(['goBackward', 'goForward', 'submit'])
 
 const goBackward = () => {
   emits('goBackward')
@@ -56,6 +62,12 @@ const goBackward = () => {
 const goForward = () => {
   emits('goForward')
 }
-</script>
 
-<style scoped></style>
+const handleSubmit = () => {
+  emits('submit')
+}
+
+const isLastStep = computed(() => {
+  return props.currentStep === stepsCount
+})
+</script>

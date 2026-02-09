@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-content :force-overscroll="false">
+    <ion-content :force-overscroll="false" class="bg-primary">
       <div class="w-full h-full flex flex-col">
         <header
           v-show="!showIntroduction"
@@ -9,9 +9,6 @@
           <span class="font-bold text-lg text-tertiary"
             >Bienvenido a tennist</span
           >
-          <ion-button fill="clear" class="text-secondary" size="small">
-            <span class="text-[1rem]">Omitir todo</span>
-          </ion-button>
         </header>
         <div v-if="showIntroduction" class="h-full grid place-items-center">
           <introduction-messages />
@@ -29,8 +26,10 @@
             @update:experience="updateExperience"
           />
 
-          <setup-profile-footer
+          <setup-profile-footer 
+            :is-loading="isLoading"
             :current-step="currentStep"
+            @submit="handleSubmit"
             @go-backward="goBackward"
             @go-forward="goForward"
           />
@@ -46,12 +45,19 @@ import SetupProfileFooter from '../components/SetupProfileFooter.vue'
 import RolePlayerSelector from '../components/RolePlayerSelector.vue'
 import ExperienceSelector from '../components/ExperienceSelector.vue'
 import StylePlayerSelector from '../components/StylePlayerSelector.vue'
-import { IonPage, IonContent, IonButton } from '@ionic/vue'
+import PlayerGoalsSelector from '../components/PlayerGoalsSelector.vue'
+import { IonPage, IonContent, useIonRouter } from '@ionic/vue'
+import { useApp } from '@/composables/useApp'
+import { useToast } from '@/composables/useToast'
 import { computed, ref } from 'vue'
 import { UserExperience } from '@/types'
-import { Experience, Gender } from '@/types/User.type'
+import { Experience, Gender, PlayerGoals } from '@/types/User.type'
+
 
 const showIntroduction = ref(true)
+const { updateUserExperience } = useApp()
+const { errorToast } = useToast()
+const ionRouter = useIonRouter()
 
 setTimeout(() => {
   showIntroduction.value = false
@@ -75,7 +81,7 @@ const experience = ref<UserExperience>({
   playingStyle: null,
   courtTypePreference: null,
   gamePreference: null,
-  playerGoals: null,
+  playerGoals: PlayerGoals.RECREATIONAL,
   gamesPerWeek: null,
   dominantHand: null,
 })
@@ -88,8 +94,25 @@ const currentSelector = computed(() => {
   if (currentStep.value === 1) return RolePlayerSelector
   else if (currentStep.value === 2) return ExperienceSelector
   else if (currentStep.value === 3) return StylePlayerSelector
+  else if (currentStep.value === 4) return PlayerGoalsSelector
   else return null
 })
+
+const isLoading = ref(false)
+const handleSubmit = () => {
+  isLoading.value = true
+  
+  updateUserExperience(experience.value)
+    .then(() => {
+      ionRouter.push('/profile/setup-completed')
+    })
+    .catch(() => {
+      errorToast('Error updating experience')
+    })
+    .finally(() => {
+      isLoading.value = false
+    })
+}
 </script>
 
 <style lang="scss" scoped>

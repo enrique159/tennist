@@ -19,6 +19,12 @@
             cerrar sesión
           </ion-button>
         </div>
+
+        <div class="w-full h-fit flex flex-col items-center justify-center">
+          <ion-button @click="goToSetupProfile">
+            actualizar experiencia
+          </ion-button>
+        </div>
       </div>
     </ion-content>
   </ion-page>
@@ -42,5 +48,9 @@ const logOut = () => {
   signOut()
   clearStorage()
   ionRouter.navigate('/auth/login', 'root')
+}
+
+const goToSetupProfile = () => {
+  ionRouter.navigate('/profile/setup', 'forward')
 }
 </script>

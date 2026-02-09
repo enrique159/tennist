@@ -7,7 +7,7 @@ import Exception from '../shared/error/Exception'
 import HttpStatusCode from '../shared/enums/httpStatusCode'
 import ErrorCode from '../shared/error/ErrorCodes'
 
-const TIME_OUT = 30000
+const TIME_OUT = 10000
 
 export default class Http implements IHttp {
   private axios!: AxiosInstance

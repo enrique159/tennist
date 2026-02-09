@@ -3,8 +3,12 @@ import {
   signIn as signInUseCase,
   signUp as signUpUseCase,
 } from '@/app/auth/SignInRepository'
+import {
+  updateUserExperience as updateUserExperienceUseCase,
+} from '@/app/modules/users/UserRepository'
 import { ISignInRequestPayload, ISignUpRequestPayload } from '@/app/auth/interfaces'
-import { User } from '@/types'
+import { User, UserExperience } from '@/types'
+import { AuthHeader } from '@/app/network/domain/interfaces'
 
 interface IAppState {
   token: string
@@ -54,6 +58,18 @@ export const useAppStore = defineStore('app', {
 
     async signUp(payload: ISignUpRequestPayload) {
       const action = signUpUseCase(payload)
+      action.then((response) => {
+        return response
+      }).catch((error) => {
+        console.error('Error ❗️:', error.errors)
+        return error
+      })
+
+      return action
+    },
+    
+    async updateUserExperience(payload: Partial<UserExperience>, authHeader: AuthHeader) {
+      const action = updateUserExperienceUseCase(payload, this.user.id!, authHeader)
       action.then((response) => {
         return response
       }).catch((error) => {

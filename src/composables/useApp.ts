@@ -1,5 +1,6 @@
 import { ISignInRequestPayload, ISignUpRequestPayload } from '@/app/auth/interfaces'
 import { useAppStore } from '@/stores/appStore'
+import { UserExperience } from '@/types'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 
@@ -15,6 +16,13 @@ export const useApp = () => {
     return user.value.fullName && user.value.fullName.length > 0 && user.value.fullName.split(' ')[0]
   })
 
+  const authHeader = computed(() => {
+    return {
+      Authorization: `Bearer ${appStore.getStateToken}`,
+    }
+  })
+
+  // Functions
   const setToken = (token: string) => {
     appStore.setToken(token)
   }
@@ -41,18 +49,24 @@ export const useApp = () => {
     return appStore.signUp(payload)
   }
 
+  const updateUserExperience = (payload: Partial<UserExperience>) => {
+    return appStore.updateUserExperience(payload, authHeader.value)
+  }
+
   return {
     user,
     stats,
     wins,
     validToken,
     firstName,
+    authHeader,
 
     setToken,
     setUser,
     signOut,
 
     signIn,
-    signUp
+    signUp,
+    updateUserExperience
   }
 }

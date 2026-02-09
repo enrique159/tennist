@@ -2,6 +2,7 @@ import { RouteRecordRaw } from 'vue-router';
 import ProfileModule from './ProfileModule.vue';
 import MyProfilePage from './views/MyProfilePage.vue';
 import SetupProfilePage from './views/SetupProfilePage.vue';
+import SetupCompletedPage from './views/SetupCompletedPage.vue';
 
 export const ProfileRoutes: Array<RouteRecordRaw> = [
   {
@@ -20,9 +21,11 @@ export const ProfileRoutes: Array<RouteRecordRaw> = [
         path: 'setup',
         name: 'SetupProfile',
         component: SetupProfilePage,
-        meta: {
-          requiresAuth: false,
-        },
+      },
+      {
+        path: 'setup-completed',
+        name: 'SetupCompleted',
+        component: SetupCompletedPage,
       }
     ],
   },

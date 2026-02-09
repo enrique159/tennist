@@ -28,8 +28,8 @@ const { toast, dismissToast } = useToast()
 
 <style lang="scss">
 ion-toast.success-toast {
-  --background: v.$color-complementary-1;
-  --color: v.$color-tertiary;
+  --background: #19DF62;
+  --color: #1A2529;
 }
 
 ion-toolbar > div {

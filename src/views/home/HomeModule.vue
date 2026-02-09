@@ -9,8 +9,8 @@
         >
           <ion-content class="bg-tertiary" :force-overscroll="false">
             <ion-list id="inbox-list" class="pl-2 custom-content">
-              <ion-list-header class="mb-8 flex items-center justify-between">
-                <span class="text-primary font-light">tennist</span>
+              <ion-list-header class="mb-8 flex items-center justify-between pr-4">
+                <span class="text-primary font-light text-xl">tennist</span>
                 <ion-menu-toggle class="ml-auto">
                   <icon-x class="text-white" />
                 </ion-menu-toggle>
