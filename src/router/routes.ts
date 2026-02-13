@@ -4,6 +4,7 @@ import LoadingPage from '@/views/LoadingPage.vue'
 import { AuthRoutes } from '@/views/auth/routes'
 import { HomeRoutes } from '@/views/home/routes'
 import { ProfileRoutes } from '@/views/profile/routes'
+import { VenuesRoutes } from '@/views/venues/routes'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,6 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/loading', component: LoadingPage },
   ...AuthRoutes,
   ...HomeRoutes,
+  ...VenuesRoutes,
   ...ProfileRoutes
 ]
 

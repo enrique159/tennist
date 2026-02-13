@@ -6,7 +6,7 @@ export interface UserLocation {
   lng: number
 }
 
-const useGeolocation = () => {
+export const useGeolocation = () => {
   const location = ref<UserLocation | null>(null)
   const locationError = ref<string | null>(null)
   const loading = ref(false)
@@ -55,5 +55,3 @@ const useGeolocation = () => {
     requestPermissions,
   }
 }
-
-export default useGeolocation

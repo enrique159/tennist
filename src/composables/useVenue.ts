@@ -3,7 +3,7 @@ import { storeToRefs } from "pinia";
 import { useApp } from "./useApp";
 import { FindNearbyVenuesParams } from "@/types";
 
-const useVenue = () => {
+export const useVenue = () => {
   const venueStore = useVenueStore()
   const { authHeader } = useApp()
   const { venues } = storeToRefs(venueStore)
@@ -18,5 +18,3 @@ const useVenue = () => {
     getNearbyVenues
   }
 }
-
-export default useVenue

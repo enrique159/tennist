@@ -53,6 +53,7 @@
 
     <button
       class="flex-shrink-0 bg-black/10 active:bg-black/20 active:scale-95 ease-out duration-200 transition-all rounded-full p-2 w-20 h-20 aspect-square flex items-center justify-center relative"
+      @click="ionRouter.push('/venues')"
     >
       <IconArrowRight size="24" />
       <span class="absolute -bottom-6 text-complementary2 text-sm"
@@ -69,13 +70,15 @@
 </template>
 
 <script setup lang="ts">
-import useGeolocation from '@/composables/useGeolocation'
-import useVenue from '@/composables/useVenue'
+import { useIonRouter } from '@ionic/vue'
+import { useGeolocation } from '@/composables/useGeolocation'
+import { useVenue } from '@/composables/useVenue'
 import { IconLocationFilled, IconArrowRight } from '@tabler/icons-vue'
 import { computed, ref } from 'vue'
 
 const { venues, getNearbyVenues } = useVenue()
 const { getCurrentPosition, loading } = useGeolocation()
+const ionRouter = useIonRouter()
 
 const isAllLoading = computed(() => {
   return isLoading.value || loading.value

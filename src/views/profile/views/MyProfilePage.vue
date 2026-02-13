@@ -4,7 +4,7 @@
       <div class="w-full h-full">
         <ion-header class="bg-primary h-20 shadow-none">
           <div class="flex h-full w-full flex-row items-center justify-between px-4">
-            <button class="custom-menu-button" @click="goHome">
+            <button class="custom-menu-button" @click="$router.back()">
               <icon-arrow-left class="text-tertiary" />
             </button>
 
@@ -39,10 +39,6 @@ import { useStorage } from '@/composables/useStorage';
 const ionRouter = useIonRouter()
 const { signOut } = useApp()
 const { clearStorage } = useStorage()
-
-const goHome = () => {
-  ionRouter.back()
-}
 
 const logOut = () => {
   signOut()

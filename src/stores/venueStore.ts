@@ -16,19 +16,26 @@ export const useVenueStore = defineStore('venue', () =>{
   const setVenues = (newVenues: Venue[]) => {
     venues.value = newVenues
   }
+  const addVenues = (newVenues: Venue[]) => {
+    venues.value.push(...newVenues)
+  }
   
   // FETCH API ⚡️
   const getNearbyVenues = async (params: FindNearbyVenuesParams, authHeader: AuthHeader) => {
     const action = getNearbyVenuesUseCase(params, authHeader)
     action.then((response) => {
+      if (params.page === 1) {
         setVenues(response.data)
-        return response
-      }).catch((error) => {
-        console.error('Error ❗️:', error.errors)
-        return error
-      })
+      } else {
+        addVenues(response.data)
+      }
+      return response
+    }).catch((error) => {
+      console.error('Error ❗️:', error.errors)
+      return error
+    })
 
-      return action
+    return action
   }
   
   return {

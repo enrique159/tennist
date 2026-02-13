@@ -1,6 +1,6 @@
 <template>
   <ion-header class="bg-transparent shadow-none h-20">
-    <div class="flex h-full w-full flex-row items-center justify-between px-4 animate__animated animate__fadeInDown">
+    <div class="flex h-full w-full flex-row items-center justify-between px-4">
       <ion-menu-button class="custom-menu-button">
         <icon-menu class="text-tertiary" />
       </ion-menu-button>
