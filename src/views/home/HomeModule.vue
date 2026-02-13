@@ -85,7 +85,7 @@ const appPages = [
     url: '/classes',
   },
   {
-    title: 'Clubs',
+    title: 'Clubes',
     url: '/clubs',
   },
   {

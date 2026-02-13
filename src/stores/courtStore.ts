@@ -19,8 +19,5 @@ export const useCourtStore = defineStore('court', {
     addCourt(court: Court) {
       this.courts.push(court)
     },
-    removeCourt(court: Court) {
-      this.courts = this.courts.filter((c) => c._id !== court._id)
-    }
   }
 })

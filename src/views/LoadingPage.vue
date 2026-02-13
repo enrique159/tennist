@@ -21,7 +21,6 @@ const { setToken, setUser, validToken } = useApp()
 
 const setupStorageInSession = async() => {
   const storageValues = await getAllStorageValues()
-  console.log('storageValues', storageValues)
   storageValues.forEach((element: any) => {
     if (element.key === 'tennist_token') setToken(element.value || '')
     if (element.key === 'tennist_user') setUser(element.value)

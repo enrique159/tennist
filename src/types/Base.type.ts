@@ -1,7 +1,7 @@
-interface Base {
+export interface Base {
   id?: string
-  created_at?: string
-  updated_at?: string
+  createdAt?: string
+  updatedAt?: string
 }
 
 export default Base

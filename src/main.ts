@@ -45,6 +45,7 @@ import RoundedButton from './components/buttons/RoundedButton.vue';
 import IconButton from './components/buttons/IconButton.vue';
 import LoadingSpinner from './components/LoadingSpinner.vue';
 import CustomCheckbox from './components/inputs/CustomCheckbox.vue';
+import SkeletonBadge from './components/skeletons/SkeletonBadge.vue';
 
 // Global Composables
 const app = createApp(App)
@@ -56,6 +57,7 @@ app.component('RoundedButton', RoundedButton);
 app.component('IconButton', IconButton);
 app.component('LoadingSpinner', LoadingSpinner);
 app.component('CustomCheckbox', CustomCheckbox);
+app.component('SkeletonBadge', SkeletonBadge)
 app.directive('maska', vMaska)
 app.use(IonicVue);
 app.use(router);

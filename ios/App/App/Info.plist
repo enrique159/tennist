@@ -38,5 +38,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Necesitamos tu ubicación para mostrarte venues cercanos</string>
 </dict>
 </plist>

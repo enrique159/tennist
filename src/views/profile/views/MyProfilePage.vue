@@ -2,7 +2,7 @@
   <ion-page>
     <ion-content :force-overscroll='false' class="bg-primary">
       <div class="w-full h-full">
-        <ion-header class="bg-primary h-20">
+        <ion-header class="bg-primary h-20 shadow-none">
           <div class="flex h-full w-full flex-row items-center justify-between px-4">
             <button class="custom-menu-button" @click="goHome">
               <icon-arrow-left class="text-tertiary" />
