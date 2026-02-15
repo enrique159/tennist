@@ -12,8 +12,13 @@
           <ion-title class="font-light text-tertiary"> Canchas </ion-title>
         </div>
       </ion-header>
+      <div v-if="isAllLoading" class="h-fit w-full px-6 flex flex-col gap-y-4">
+        <div class="skeleton h-[260px] w-full rounded-[2.8rem]"></div>
+        <div class="skeleton h-[260px] w-full rounded-[2.8rem]"></div>
+        <div class="skeleton h-[260px] w-full rounded-[2.8rem]"></div>
+      </div>
       <div
-        v-if="!isAllLoading"
+        v-else
         class="flex flex-col items-center justify-center gap-y-4 px-6 pt-20"
       >
         <VenueCard v-for="venue in venues" :key="venue.id" :venue="venue" @click="$router.push(`/venues/${venue.id}`)" />

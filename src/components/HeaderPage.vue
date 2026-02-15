@@ -13,7 +13,7 @@
 
       <slot name="right">
         <div class="flex items-center border-4 border-secondary rounded-full"  @click="goToProfile">
-          <img src="@/assets/example_profile.jpg" class="w-[52px] rounded-full object-cover" />
+          <img src="@/assets/example_profile.jpg" class="w-[52px] h-[52px] rounded-full object-cover" />
         </div>
       </slot>
     </div>

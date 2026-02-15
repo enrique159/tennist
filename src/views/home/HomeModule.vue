@@ -22,7 +22,10 @@
                 :key="i"
               >
                 <ion-item
-                  @click="selectedIndex = i"
+                  @click="() => {
+                    selectedIndex = i
+                    $router.push(p.url)
+                  }"
                   router-direction="root"
                   :router-link="p.url"
                   lines="none"
@@ -74,7 +77,7 @@ const appPages = [
   },
   {
     title: 'Canchas',
-    url: '/courts',
+    url: '/venues',
   },
   {
     title: 'Prácticas',
