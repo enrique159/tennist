@@ -17,6 +17,7 @@
       v-for="venue in venues"
       :key="venue.id"
       class="flex-shrink-0 bg-tertiary rounded-full p-2 w-[280px] h-[120px] animate__animated animate__fadeInLeft"
+      @click="$router.push(`/venues/${venue.id}`)"
     >
       <div
         class="bg-white w-full h-full rounded-full flex items-center justify-start"
