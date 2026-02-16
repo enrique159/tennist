@@ -39,8 +39,8 @@
           <h6 class="font-light text-gray-600">
             CANCHAS {{ venue.type === 'PUBLIC' ? 'PÚB.' : 'PRIV.' }}
           </h6>
-          <h3 class="text-lg font-bold uppercase">
-            {{ venue.name.split(' ').slice(0, 1).join(' ') }}
+          <h3 class="text-lg font-bold uppercase truncate max-w-[130px]">
+            {{ venue.name }}
           </h3>
           <span
             class="text-sm text-complementary2 font-semibold flex items-center gap-2 mt-1"
