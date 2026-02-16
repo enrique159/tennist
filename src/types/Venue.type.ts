@@ -13,6 +13,7 @@ export interface FindNearbyVenuesParams {
 
 export interface Venue {
   id: string;
+  alias: string;
   name: string;
   description: string;
   address: string;
@@ -27,6 +28,9 @@ export interface Venue {
   courts: Court[];
   images: VenueImage[];
   distance: number;
+  facebook?: string | null;
+  instagram?: string | null;
+  url?: string | null;
 }
 
 export interface VenueImage {
