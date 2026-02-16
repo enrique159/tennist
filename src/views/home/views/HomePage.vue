@@ -1,5 +1,5 @@
 <template>
-  <ion-page>
+  <ion-page class="bg-primary">
     <header-page />
     <ion-content :force-overscroll='false'>
       <section class="flex items-center w-full mt-4 px-8 gap-2 animate__animated animate__fadeIn">

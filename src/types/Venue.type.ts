@@ -1,6 +1,7 @@
 import { Court } from "./Court.type";
 
 export interface FindNearbyVenuesParams {
+  search?: string;
   lat: number;
   lng: number;
   radiusKm?: number;

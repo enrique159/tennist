@@ -9,7 +9,9 @@
         >
           <ion-content class="bg-tertiary" :force-overscroll="false">
             <ion-list id="inbox-list" class="pl-2 custom-content">
-              <ion-list-header class="mb-8 flex items-center justify-between pr-4">
+              <ion-list-header
+                class="mb-8 flex items-center justify-between pr-4"
+              >
                 <span class="text-primary font-light text-xl">tennist</span>
                 <ion-menu-toggle class="ml-auto">
                   <icon-x class="text-white" />
@@ -22,24 +24,14 @@
                 :key="i"
               >
                 <ion-item
-                  @click="() => {
-                    selectedIndex = i
-                    $router.push(p.url)
-                  }"
-                  router-direction="root"
-                  :router-link="p.url"
+                  @click="$router.push(p.url)"
                   lines="none"
                   :detail="false"
                   class="hydrated"
                   :class="[i === 7 ? 'pt-20' : '']"
                 >
                   <ion-label>
-                    <span
-                      class="text-white uppercase font-bold text-2xl"
-                      :class="{
-                        'text-primary selected-marker': selectedIndex === i,
-                      }"
-                    >
+                    <span class="text-white uppercase font-bold text-2xl">
                       {{ p.title }}
                     </span>
                   </ion-label>
@@ -67,9 +59,7 @@ import {
   IonItem,
   IonLabel,
 } from '@ionic/vue'
-import { ref } from 'vue'
 
-const selectedIndex = ref(0)
 const appPages = [
   {
     title: 'Inicio',
@@ -109,12 +99,6 @@ const appPages = [
   },
 ]
 
-const path = window.location.pathname.split('/')[1]
-if (path !== undefined) {
-  selectedIndex.value = appPages.findIndex(
-    (page) => page.url.split('/')[1] === path.toLowerCase(),
-  )
-}
 </script>
 
 <style lang="scss" scoped>
@@ -156,20 +140,5 @@ ion-item.selected {
 
 .custom-content {
   padding-top: calc(env(safe-area-inset-top) + 1rem);
-}
-
-.selected-marker {
-  position: relative;
-  padding-left: 12px;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background-color: v.$color-primary;
-    border-radius: 4px;
-  }
 }
 </style>
