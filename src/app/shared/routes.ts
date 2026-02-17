@@ -41,6 +41,23 @@ const calculatePrice = (baseUrl: string, courtId: string) => `${finishSlash(base
 const createReservation = (baseUrl: string, courtId: string) => `${finishSlash(baseUrl)}courts/${courtId}/reservations`
 const getMyReservations = (baseUrl: string) => `${finishSlash(baseUrl)}users/me/reservations`
 const cancelReservation = (baseUrl: string, reservationId: string) => `${finishSlash(baseUrl)}reservations/${reservationId}`
+// PRACTICE ROUTES
+const createPractice = (baseUrl: string) => `${finishSlash(baseUrl)}users/me/practices`
+const getMyPractices = (baseUrl: string) => `${finishSlash(baseUrl)}users/me/practices`
+const getMyPracticeStats = (baseUrl: string) => `${finishSlash(baseUrl)}users/me/practices/stats`
+// COURSE ROUTES
+const createCourse = (baseUrl: string) => `${finishSlash(baseUrl)}courses`
+const searchCourses = (baseUrl: string) => `${finishSlash(baseUrl)}courses`
+const getCourseById = (baseUrl: string, courseId: string) => `${finishSlash(baseUrl)}courses/${courseId}`
+const updateCourseStatus = (baseUrl: string, courseId: string) => `${finishSlash(baseUrl)}courses/${courseId}/status`
+const requestEnrollment = (baseUrl: string, courseId: string) => `${finishSlash(baseUrl)}courses/${courseId}/enrollments/request`
+const addUserToCourse = (baseUrl: string, courseId: string) => `${finishSlash(baseUrl)}courses/${courseId}/enrollments/add-user`
+const reviewEnrollment = (baseUrl: string, courseId: string, enrollmentId: string) => `${finishSlash(baseUrl)}courses/${courseId}/enrollments/${enrollmentId}/review`
+const getCourseEnrollments = (baseUrl: string, courseId: string) => `${finishSlash(baseUrl)}courses/${courseId}/enrollments`
+const createClassSession = (baseUrl: string, courseId: string) => `${finishSlash(baseUrl)}courses/${courseId}/classes`
+const getCourseSessions = (baseUrl: string, courseId: string) => `${finishSlash(baseUrl)}courses/${courseId}/classes`
+const getMyCourses = (baseUrl: string) => `${finishSlash(baseUrl)}users/me/courses`
+const getMyClassSessions = (baseUrl: string) => `${finishSlash(baseUrl)}users/me/classes`
 
 export default {
   // AUTH ROUTES
@@ -82,4 +99,21 @@ export default {
   createReservation,
   getMyReservations,
   cancelReservation,
+  // PRACTICE ROUTES
+  createPractice,
+  getMyPractices,
+  getMyPracticeStats,
+  // COURSE ROUTES
+  createCourse,
+  searchCourses,
+  getCourseById,
+  updateCourseStatus,
+  requestEnrollment,
+  addUserToCourse,
+  reviewEnrollment,
+  getCourseEnrollments,
+  createClassSession,
+  getCourseSessions,
+  getMyCourses,
+  getMyClassSessions,
 }
