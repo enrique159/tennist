@@ -5,6 +5,7 @@ import { AuthRoutes } from '@/views/auth/routes'
 import { HomeRoutes } from '@/views/home/routes'
 import { ProfileRoutes } from '@/views/profile/routes'
 import { VenuesRoutes } from '@/views/venues/routes'
+import { PracticesRoutes } from '@/views/practices/routes'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,6 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   ...AuthRoutes,
   ...HomeRoutes,
   ...VenuesRoutes,
+  ...PracticesRoutes,
   ...ProfileRoutes
 ]
 

@@ -26,7 +26,7 @@ export interface CreatePracticePayload {
   playedFriendlyMatch?: boolean;
   practicedServes?: boolean;
   venueId?: string;
-  sourceType?: PracticeSourceType;
+  sourceType: PracticeSourceType;
   classAttended?: boolean;
   classId?: string;
   classSessionId?: string;

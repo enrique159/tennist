@@ -83,3 +83,18 @@ body {
     transform: translateX(100%);
   }
 }
+
+
+ion-datetime {
+  border-radius: 16px;
+}
+
+.practice-date-btn::part(native) {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  background-color: transparent;
+  border-bottom: 1px solid v.$color-tertiary;
+  border-radius: 0;
+  text-align: left;
+  font-size: 1.1rem;
+}
